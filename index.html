@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Navigator — AI-Powered Indoor Navigation</title>
+<meta name="description" content="Navigate any indoor space with real-time AR, DINOv2 AI vision, and intelligent pathfinding. No GPS. No app install. Just your camera.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">VN</div>
+    Vision Navigator
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#technology">Technology</a></li>
+    <li><a href="#use-cases">Use Cases</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Demo →</a>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Now live at SZABIST 100 Campus, Karachi
+    </div>
+
+    <h1>
+      Indoor Navigation<br>
+      <span class="gradient-text">Powered by AI Vision</span>
+    </h1>
+
+    <p>
+      Vision Navigator uses fine-tuned DINOv2 deep learning, FAISS vector search,
+      and real-time AR overlays to guide anyone through complex indoor spaces —
+      instantly, from any smartphone browser.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#features" class="btn-primary">
+        ⚡ Explore Features
+      </a>
+      <a href="#how-it-works" class="btn-secondary">
+        ▶ See How It Works
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">98.3%</div>
+        <div class="lbl">Location Accuracy</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">3.5s</div>
+        <div class="lbl">Re-localisation Speed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">13</div>
+        <div class="lbl">Campus Nodes Mapped</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">0</div>
+        <div class="lbl">App Installs Required</div>
+      </div>
+    </div>
+
+    <!-- PHONE MOCKUP -->
+    <div class="hero-phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-camera-bar">
+            <div class="phone-camera-dot"></div>
+          </div>
+          <div class="ar-scene">
+            <div class="ar-label">📍 Fountain Area → SSC Room</div>
+            <div class="ar-arrow-wrap">
+              <svg class="ar-arrow" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="28" stroke="rgba(37,99,235,0.3)" stroke-width="2"/>
+                <path d="M30 8 L42 36 L30 30 L18 36 Z" fill="url(#ag)" />
+                <defs>
+                  <linearGradient id="ag" x1="30" y1="8" x2="30" y2="36" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#3b82f6"/>
+                    <stop offset="100%" stop-color="#06b6d4"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="ar-dist">↑ 45 metres ahead</div>
+              <div class="ar-next">Next: Helmet Area</div>
+            </div>
+            <div class="minimap-preview">
+              <svg width="70" height="70" viewBox="0 0 70 70">
+                <circle cx="20" cy="15" r="4" fill="#3b82f6"/>
+                <circle cx="40" cy="25" r="4" fill="#374151"/>
+                <circle cx="15" cy="40" r="4" fill="#374151"/>
+                <circle cx="35" cy="55" r="5" fill="#ef4444"/>
+                <line x1="20" y1="15" x2="40" y2="25" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3"/>
+                <line x1="40" y1="25" x2="15" y2="40" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3"/>
+                <line x1="15" y1="40" x2="35" y2="55" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROBLEM ══════════════ -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <div class="section-badge">🎯 The Problem</div>
+        <h2 class="section-title">Indoor spaces are a navigation nightmare</h2>
+        <p class="section-sub">GPS stops working the moment you walk through a door. Universities, hospitals, malls, and corporate campuses leave visitors confused, lost, and frustrated.</p>
+      </div>
+      <div class="problem-points">
+        <div class="problem-point fade-up">
+          <div class="problem-icon">🗺️</div>
+          <div>
+            <h4>GPS Fails Indoors</h4>
+            <p>Satellite signals cannot penetrate walls. Google Maps is useless inside buildings.</p>
+          </div>
+        </div>
+        <div class="problem-point fade-up">
+          <div class="problem-icon">😕</div>
+          <div>
+            <h4>Static Maps Don't Help</h4>
+            <p>Printed floor maps require you to figure out your own position — the hardest part of navigation.</p>
+          </div>
+        </div>
+        <div class="problem-point fade-up">
+          <div class="problem-icon">📱</div>
+          <div>
+            <h4>Existing Solutions Are Too Expensive</h4>
+            <p>Bluetooth beacons and QR-code systems require costly hardware installation across the entire building.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FEATURES ══════════════ -->
+<section id="features">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge">✨ Core Features</div>
+      <h2 class="section-title">Everything you need to navigate,<br>nothing you don't</h2>
+      <p class="section-sub">Vision Navigator combines cutting-edge AI with a zero-friction delivery model — no hardware, no app, no setup.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-blue">🎯</div>
+        <h3>Real-Time AR Navigation</h3>
+        <p>Live direction arrows overlaid directly on the camera feed. The arrow rotates as you turn, pointing exactly toward your next waypoint. Powered by Canvas 2D and the device gyroscope.</p>
+        <span class="feature-tag">AR Overlay</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-cyan">🧠</div>
+        <h3>AI Visual Localisation</h3>
+        <p>Fine-tuned DINOv2 ViT-B/14 (Meta AI) recognises your location from a single camera frame using 768-dimensional visual embeddings. No QR codes, no markers — just the camera.</p>
+        <span class="feature-tag">Computer Vision</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-purple">⚡</div>
+        <h3>Instant Re-Localisation</h3>
+        <p>The system re-identifies your position every 3.5 seconds as you walk. If you take a wrong turn, the path recalculates automatically — just like turn-by-turn GPS, indoors.</p>
+        <span class="feature-tag">Live Tracking</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-green">🗺️</div>
+        <h3>Live Campus Mini-Map</h3>
+        <p>A real-time mini-map in the corner of the screen shows all navigation nodes, your current position (blue), your destination (red), and your highlighted walking route.</p>
+        <span class="feature-tag">Canvas Mini-Map</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-orange">🤖</div>
+        <h3>ZabGPT Campus Chatbot</h3>
+        <p>AI-powered campus assistant that answers questions about facilities, offices, labs, and policies using Retrieval-Augmented Generation (RAG) from official documents — with source citations.</p>
+        <span class="feature-tag">RAG · LLM</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-pink">📱</div>
+        <h3>Zero Installation</h3>
+        <p>Works in any modern smartphone browser (Chrome, Safari). No app download, no QR scan, no Bluetooth pairing. Share a URL and it's ready to use in seconds.</p>
+        <span class="feature-tag">Web-Based · PWA-Ready</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-cyan">🔍</div>
+        <h3>FAISS Vector Search</h3>
+        <p>Facebook AI Similarity Search enables sub-millisecond nearest-neighbour lookups across 630+ image embeddings using cosine similarity. Scales to millions of images.</p>
+        <span class="feature-tag">Vector DB</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-blue">🗺️</div>
+        <h3>A* Shortest Pathfinding</h3>
+        <p>Graph-based A* algorithm with floor-penalty heuristic computes the optimal walking route between any two nodes, considering distances, connections, and floor changes.</p>
+        <span class="feature-tag">Graph Algorithm</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon icon-purple">🔒</div>
+        <h3>HTTPS & Privacy-First</h3>
+        <p>All communication runs over HTTPS. Images are processed in-memory (no disk writes, no storage). No user data is retained. CORS-secured REST API with rate limiting.</p>
+        <span class="feature-tag">Secure · Private</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<section id="how-it-works" class="how">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge">⚙️ How It Works</div>
+      <h2 class="section-title">From camera to arrow in under a second</h2>
+      <p class="section-sub">Four intelligent steps happen automatically every time you lift your phone.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">📸</div>
+        <h4>Capture</h4>
+        <p>Your phone camera captures a JPEG frame (0.7 quality, ≤2 MB) and sends it to the AI server over HTTPS.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">🧠</div>
+        <h4>Identify</h4>
+        <p>DINOv2 ViT-B/14 generates a 768-dimensional embedding. FAISS finds the top-5 matches. Majority vote → your location.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">🗺️</div>
+        <h4>Route</h4>
+        <p>A* algorithm computes the shortest path from your current node to your destination across the campus graph.</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">🎯</div>
+        <h4>Guide</h4>
+        <p>An AR arrow overlaid on your camera feed points toward the next waypoint. The mini-map updates. Walk and repeat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TECHNOLOGY ══════════════ -->
+<section id="technology">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge">🛠️ Technology Stack</div>
+      <h2 class="section-title">Built on world-class AI infrastructure</h2>
+      <p class="section-sub">Every component is production-grade, open-source, and battle-tested at scale.</p>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">🦖</span>
+        <h4>DINOv2 ViT-B/14</h4>
+        <p>Meta AI's state-of-the-art vision transformer. Fine-tuned on 630 campus images. 98.3% test accuracy.</p>
+        <span class="tech-type">Deep Learning</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">⚡</span>
+        <h4>FAISS IndexFlatIP</h4>
+        <p>Facebook AI Similarity Search. Exact cosine similarity over 768-d embeddings. Sub-millisecond retrieval.</p>
+        <span class="tech-type">Vector Search</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">🔭</span>
+        <h4>timm Library</h4>
+        <p>PyTorch Image Models. Loads ViT-B/14 with pretrained LVD-142M weights. 142M image pretraining.</p>
+        <span class="tech-type">Model Zoo</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">🐍</span>
+        <h4>Python Flask</h4>
+        <p>Lightweight REST API with 7 endpoints. Threaded, HTTPS-enabled, CORS-secured, in-memory image processing.</p>
+        <span class="tech-type">Backend API</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">🗺️</span>
+        <h4>A* Pathfinding</h4>
+        <p>Weighted graph with Euclidean heuristic + floor-change penalty. Optimal routes across 13 campus nodes.</p>
+        <span class="tech-type">Algorithm</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">🎨</span>
+        <h4>Canvas 2D API</h4>
+        <p>Native browser Canvas renders the AR arrow overlay and mini-map at 30Hz. Zero dependencies.</p>
+        <span class="tech-type">AR Rendering</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">🗄️</span>
+        <h4>ChromaDB + RAG</h4>
+        <p>Vector database storing SZABIST PDF document chunks. SentenceTransformer embeddings power the ZabGPT chatbot retrieval.</p>
+        <span class="tech-type">Vector DB</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">🤖</span>
+        <h4>Groq · Llama 3 70B</h4>
+        <p>Ultra-fast LLM inference for ZabGPT. Generates grounded, cited answers from retrieved document chunks.</p>
+        <span class="tech-type">LLM</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">📡</span>
+        <h4>DeviceOrientation API</h4>
+        <p>Gyroscope-based relative heading (no compass dependency). Calibrated once per session. Works reliably indoors.</p>
+        <span class="tech-type">Sensor Fusion</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">📷</span>
+        <h4>getUserMedia API</h4>
+        <p>Rear-camera access via WebRTC. JPEG capture at quality 0.7, max 1280×720, ≤2 MB per frame.</p>
+        <span class="tech-type">Camera API</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">🔐</span>
+        <h4>HTTPS / SSL</h4>
+        <p>Self-signed SSL certificate enables camera access on iOS Safari. All API traffic encrypted end-to-end.</p>
+        <span class="tech-type">Security</span>
+      </div>
+      <div class="tech-card fade-up">
+        <span class="tech-emoji">☁️</span>
+        <h4>Google Colab T4 GPU</h4>
+        <p>Model trained on NVIDIA T4 in under 45 minutes. 100% best validation accuracy. No local GPU required.</p>
+        <span class="tech-type">Cloud Training</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<section class="stats">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge">📊 By the Numbers</div>
+      <h2 class="section-title">Results that speak for themselves</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-count="98.3" data-suffix="%">0%</div>
+        <p>Location recognition accuracy on held-out test set</p>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-count="630" data-suffix="">0</div>
+        <p>Campus images in the FAISS training index</p>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-count="3.5" data-suffix="s">0s</div>
+        <p>Re-localisation interval during live navigation</p>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-count="13" data-suffix="">0</div>
+        <p>Campus locations mapped and navigable</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BENEFITS ══════════════ -->
+<section id="benefits">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge">💡 Key Benefits</div>
+      <h2 class="section-title">Why Vision Navigator beats every alternative</h2>
+      <p class="section-sub">No hardware. No app. No setup. Just point and navigate.</p>
+    </div>
+    <div class="benefits-grid">
+
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon icon-blue">💰</div>
+        <div>
+          <h4>Zero Hardware Cost</h4>
+          <p>Traditional indoor navigation requires Bluetooth beacons every 10 metres — costing thousands of dollars per building. Vision Navigator uses the cameras already in everyone's pockets.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon icon-green">⚡</div>
+        <div>
+          <h4>Instant Deployment</h4>
+          <p>No physical installation, no maintenance, no battery replacements. Deploy to a new building by collecting photos and retraining the model — a matter of hours, not weeks.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon icon-cyan">📱</div>
+        <div>
+          <h4>Works on Any Smartphone</h4>
+          <p>Chrome on Android or Safari on iPhone — no app install required. Share a link and navigation starts instantly. 100% web-based, works on 5-year-old devices.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon icon-purple">🔒</div>
+        <div>
+          <h4>Privacy First</h4>
+          <p>Images are processed in memory — no photos stored, no user tracking, no database of movements. GDPR-friendly by design. Users remain anonymous.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon icon-orange">🌐</div>
+        <div>
+          <h4>No GPS Dependency</h4>
+          <p>GPS fails indoors. Vision Navigator works entirely from visual recognition and gyroscope data — making it as accurate on the 4th floor as it is at the entrance.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon icon-pink">🤖</div>
+        <div>
+          <h4>AI That Learns Your Space</h4>
+          <p>The model is fine-tuned on your specific building. It recognises your exact corridors, rooms, and landmarks — not generic environments. Accuracy improves with more training data.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ USE CASES ══════════════ -->
+<section id="use-cases" class="usecases">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge">🏢 Use Cases</div>
+      <h2 class="section-title">Navigate any complex indoor space</h2>
+      <p class="section-sub">Vision Navigator is designed to scale to any large building — not just universities.</p>
+    </div>
+    <div class="usecase-grid">
+
+      <div class="usecase-card fade-up">
+        <div class="usecase-header uc-uni">🎓</div>
+        <div class="usecase-body">
+          <h4>Universities & Colleges</h4>
+          <p>Help new students, parents, and visitors navigate multi-building campuses on day one — without a guide or printed map.</p>
+          <ul>
+            <li>Find classrooms, labs, and admin offices</li>
+            <li>Campus event wayfinding</li>
+            <li>AI chatbot for academic queries</li>
+            <li>Multi-floor navigation with stairs routing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="usecase-card fade-up">
+        <div class="usecase-header uc-hosp">🏥</div>
+        <div class="usecase-body">
+          <h4>Hospitals & Healthcare</h4>
+          <p>Patients and visitors navigating large hospitals experience significant anxiety. AR wayfinding reduces stress and staff interruptions.</p>
+          <ul>
+            <li>Guide patients to wards and OPDs</li>
+            <li>Visitor directions to ICU, labs, pharmacy</li>
+            <li>Emergency route guidance</li>
+            <li>Multilingual navigation support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="usecase-card fade-up">
+        <div class="usecase-header uc-corp">🏢</div>
+        <div class="usecase-body">
+          <h4>Corporate Campuses</h4>
+          <p>Large office parks and tech campuses confuse new hires and visitors. Eliminate "Which building is this?" completely.</p>
+          <ul>
+            <li>Visitor check-in and guided walking</li>
+            <li>Meeting room & department finder</li>
+            <li>New employee onboarding navigation</li>
+            <li>Conference & event wayfinding</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PRICING ══════════════ -->
+<section id="pricing">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge">💳 Pricing</div>
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-sub">Flexible plans for institutions of every size. All plans include setup support.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card fade-up">
+        <h3>Starter</h3>
+        <div class="price">$99<span>/month</span></div>
+        <p class="price-desc">For small institutions with a single building</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Up to 20 concurrent users</li>
+          <li><span class="check">✓</span> 1 building, up to 20 locations</li>
+          <li><span class="check">✓</span> AR navigation overlay</li>
+          <li><span class="check">✓</span> Campus mini-map</li>
+          <li><span class="check">✓</span> Basic analytics dashboard</li>
+          <li><span class="cross">✗</span> ZabGPT AI chatbot</li>
+          <li><span class="cross">✗</span> Multi-building support</li>
+          <li><span class="cross">✗</span> Custom branding</li>
+        </ul>
+        <a href="#contact" class="btn-plan btn-plan-outline">Get Started</a>
+      </div>
+
+      <div class="price-card featured fade-up">
+        <div class="featured-badge">⭐ Most Popular</div>
+        <h3>Professional</h3>
+        <div class="price">$299<span>/month</span></div>
+        <p class="price-desc">For universities and mid-size institutions</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Up to 100 concurrent users</li>
+          <li><span class="check">✓</span> Up to 5 buildings, 100 locations</li>
+          <li><span class="check">✓</span> AR navigation overlay</li>
+          <li><span class="check">✓</span> Campus mini-map</li>
+          <li><span class="check">✓</span> ZabGPT AI chatbot</li>
+          <li><span class="check">✓</span> Advanced analytics</li>
+          <li><span class="check">✓</span> Custom branding & domain</li>
+          <li><span class="cross">✗</span> Dedicated GPU server</li>
+        </ul>
+        <a href="#contact" class="btn-plan btn-plan-filled">Get Started</a>
+      </div>
+
+      <div class="price-card fade-up">
+        <h3>Enterprise</h3>
+        <div class="price">Custom<span></span></div>
+        <p class="price-desc">For large campuses, hospitals & corporations</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Unlimited concurrent users</li>
+          <li><span class="check">✓</span> Unlimited buildings & locations</li>
+          <li><span class="check">✓</span> AR navigation overlay</li>
+          <li><span class="check">✓</span> Campus mini-map</li>
+          <li><span class="check">✓</span> ZabGPT AI chatbot</li>
+          <li><span class="check">✓</span> Dedicated GPU server</li>
+          <li><span class="check">✓</span> Full white-label solution</li>
+          <li><span class="check">✓</span> SLA + priority support</li>
+        </ul>
+        <a href="#contact" class="btn-plan btn-plan-outline">Contact Sales</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA ══════════════ -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="section-badge" style="margin:0 auto 20px;">📬 Get In Touch</div>
+    <h2>Ready to transform indoor navigation<br>at your institution?</h2>
+    <p>Book a live demo and see Vision Navigator in action at your campus. We'll show you how quickly we can map your building.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="mailto:info@technocas.com" class="btn-primary">📧 Book a Demo</a>
+      <a href="https://github.com/RahulAi2004/Szabist-navigator" target="_blank" class="btn-secondary">⭐ View on GitHub</a>
+    </div>
+
+    <div style="margin-top:60px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:700px; margin-left:auto; margin-right:auto; text-align:left;">
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:20px;">
+        <div style="font-size:1.4rem; margin-bottom:8px;">⚡</div>
+        <div style="font-weight:700; margin-bottom:4px; font-size:0.95rem;">Quick Setup</div>
+        <div style="color:#94a3b8; font-size:0.82rem;">Building mapped and live in as little as 48 hours</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:20px;">
+        <div style="font-size:1.4rem; margin-bottom:8px;">🤝</div>
+        <div style="font-weight:700; margin-bottom:4px; font-size:0.95rem;">Full Support</div>
+        <div style="color:#94a3b8; font-size:0.82rem;">We handle dataset collection, training and deployment</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:20px;">
+        <div style="font-size:1.4rem; margin-bottom:8px;">📈</div>
+        <div style="font-weight:700; margin-bottom:4px; font-size:0.95rem;">Scales With You</div>
+        <div style="color:#94a3b8; font-size:0.82rem;">Add new floors, buildings or campuses at any time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1.2rem;">
+          <div class="logo-icon">VN</div>
+          Vision Navigator
+        </a>
+        <p>AI-powered indoor AR navigation. No hardware. No app. Just point your camera and walk.</p>
+        <p style="margin-top:12px; font-size:0.82rem; color:#475569;">Built with ❤️ at SZABIST Karachi</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Use Cases</h5>
+        <ul>
+          <li><a href="#use-cases">Universities</a></li>
+          <li><a href="#use-cases">Hospitals</a></li>
+          <li><a href="#use-cases">Corporate</a></li>
+          <li><a href="#use-cases">Shopping Malls</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="https://github.com/RahulAi2004/Szabist-navigator" target="_blank">GitHub Repository</a></li>
+          <li><a href="mailto:info@technocas.com">Email Us</a></li>
+          <li><a href="#contact">Book a Demo</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Vision Navigator. Built by BSAI Students — SZABIST Karachi.</p>
+      <div class="footer-badges">
+        <span class="f-badge">DINOv2</span>
+        <span class="f-badge">FAISS</span>
+        <span class="f-badge">A*</span>
+        <span class="f-badge">Flask</span>
+        <span class="f-badge">RAG</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

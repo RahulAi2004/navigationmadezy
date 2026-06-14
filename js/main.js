@@ -2,7 +2,7 @@
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      setTimeout(() => entry.target.classList.add('in'), i * 80);
     }
   });
 }, { threshold: 0.12 });
@@ -42,7 +42,7 @@ const statsObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 
-const statsSection = document.querySelector('.stats-grid');
+const statsSection = document.querySelector('.stats-row');
 if (statsSection) statsObserver.observe(statsSection);
 
 // ═══ SMOOTH SCROLL ═══
